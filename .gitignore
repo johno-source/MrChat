@@ -1,0 +1,4 @@
+.ipynb_checkpoints/*.ipynb
+gptj.pt
+hello_milvus.py
+npcloud-gpt-j.ipynb

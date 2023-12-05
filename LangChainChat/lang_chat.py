@@ -10,6 +10,7 @@ from langchain.prompts import (
     HumanMessagePromptTemplate,
 )
 from langchain.chains import LLMChain
+from langchain.chains import ConversationChain
 from langchain.chat_models import ChatOpenAI
 from langchain.memory import ConversationBufferMemory
 
@@ -35,36 +36,58 @@ def save_file(filepath, content):
 
 class LangChainChatBot():
 
+    # put the prompts here so that I can see them better
+    _system_default = """
+You are a chatbot whose mission is to assist the following user. Your ultimate objectives are to minimize suffering, enhance prosperity, and promote understanding.
+
+The provided information about the user and the context articles should be integrated into your interactions. This is private information 
+not visible to the user. The user profile, compiled from past conversations, encapsulates critical details about the user which can aid in 
+shaping your responses effectively. Whenever relevant user data is detected in a conversation, the user profile is updated automatically.
+
+The context is a topic compiled similarly from past dialogues, serving as your 'long-term memory'. While numerous context articles exist in 
+your backend system, the one provided is deemed most relevant to the current conversation topic. Note that the recall system operates 
+autonomously, and it may not always retrieve the most suitable context. If the user is asking about a topic that doesn't seem to 
+align with the provided context, inform them of the memory pulled and request them to specify their query or share more details. 
+This can assist the autonomous system in retrieving the correct memory in the subsequent interaction.
+
+User Profile:
+{profile}
+
+Context:
+{context}
+
+The current date and time (ISO 8601 format) is: {datetime}
+
+Remember that the clarity of your responses and the relevance of your information recall are crucial in delivering an optimal user 
+experience. Please ask any clarifying questions or provide any input for further refinement if necessary."""
+
     def __init__(self):
-        self.llm = ChatOpenAI(model="gpt-3.5-turbo-16k")
+        self.llm = ChatOpenAI(model="gpt-3.5-turbo")
         if os.path.exists('conversation_history.pkl'):
             with open('conversation_history.pkl', 'rb') as p:
                 self.memory = pickle.load(p)
         else:
             self.memory = ConversationBufferMemory(memory_key="chat_history",return_messages=True)
 
-        self._system_default = open_file('system_default.txt')
         self._user_profile = open_file('user_profile.txt')
-        self._context = open_file('context.txt')
-
+        prompt = ChatPromptTemplate(
+            messages=[
+                self.get_system_prompt(),
+                # The `variable_name` here is what must align with memory
+                MessagesPlaceholder(variable_name="chat_history"),
+            ], input_variables=['chat_history'])
+        self._conversation = ConversationChain(llm=self.llm, prompt=prompt, verbose=True, memory=self.memory)
 
 
     def __call__(self, args):
         return self.generate_chat_response(args)
 
     def generate_chat_response(self, args):
-        return fmt(self.get_conversation()({'question' : args, })['text'])
+        return fmt(self.get_conversation().predict(args))
 
     def get_conversation(self):
-        prompt = ChatPromptTemplate(
-            messages=[
-                self.get_system_prompt(),
-                # The `variable_name` here is what must align with memory
-                MessagesPlaceholder(variable_name="chat_history"),
-                HumanMessagePromptTemplate.from_template("{question}")
-            ], input_variables=['chat_history', 'question'])
 
-        return LLMChain(llm=self.llm, prompt=prompt, verbose=True, memory=self.memory)
+        return ConversationChain(llm=self.llm, prompt=prompt, verbose=True, memory=self.memory)
 
     def get_system_prompt(self):
         sys = SystemMessagePromptTemplate.from_template(template=self._system_default)

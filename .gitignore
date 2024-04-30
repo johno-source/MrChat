@@ -2,3 +2,9 @@
 gptj.pt
 hello_milvus.py
 npcloud-gpt-j.ipynb
+TransformerAEC/wikitext103_embeddings/*.*
+TransformerAEC/test_wiki2_embeddings/*.*
+TransformerAEC/wikitext-103-valid/*.*
+TransformerAEC/wikitext-103-test/*.*
+TransformerAEC/test_wiki_embeddings/*.*
+TransformerAEC/wikitext2_embeddings/*.*

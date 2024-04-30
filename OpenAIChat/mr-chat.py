@@ -55,6 +55,12 @@ def open_file(filepath):
     with open(filepath, 'r', encoding='utf-8', errors='ignore') as infile:
         return infile.read()
     
+def save_file(filepath, content):
+    with open(filepath, 'w', encoding='utf-8') as outfile:
+        outfile.write(content)
+
+
+    
 # define the chatbot interface to memory recall
 chatbot_functions = list()
 chatbot_functions.append({'name' : 'entity', 'description': "Finds information about a named entity.", 'parameters': {
@@ -179,6 +185,14 @@ class GPTChatBot():
         response, _ = chatbot(conversation)
         self._context = response
         return response
+    
+    def exit(self, _):
+        self.update_context('NA')
+        self.update_user_profile('NA')
+        save_file("context.txt", self._context)
+        save_file("user_profile.txt", self._user_profile)
+        print('Bye!')
+        exit(0)
 
     
     # define a closure to allow class functions to be used in commands
@@ -187,17 +201,12 @@ class GPTChatBot():
             return fmt(func(args))
         return callable_entity
 
-
-def _exit(_):
-    exit(0)
-
-
 if __name__ == '__main__':
     # instantiate chatbot, variables
     interp = CommandInterpreter()
     bot = GPTChatBot()
     interp.add_default_command(bot)
-    interp.add_command('exit', _exit)
+    interp.add_command('exit', bot.make_command(bot.exit))
     interp.add_command('history', bot.make_command(bot.history))
     interp.add_command('system', bot.make_command(bot.system_prompt))
     interp.add_command('user', bot.make_command(bot.user_profile))

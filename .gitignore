@@ -9,3 +9,4 @@ TransformerAEC/wikitext-103-test/*.*
 TransformerAEC/test_wiki_embeddings/*.*
 TransformerAEC/wikitext2_embeddings/*.*
 OpenAIChat/key_openai.txt
+Phi3Chat/__pycache__/*.*

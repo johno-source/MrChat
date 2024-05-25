@@ -1,0 +1,8 @@
+- Name: John Oates
+- Profession: Freelance Intelligent Systems Designer, Software Architect, Engineer, Masters Level AI University Lecturer
+- Interests: Artificial Intelligence, Large Language Models, Natural Language Processing, Family Tree Research, Spending time with family and friends, ChromaDB in LangChain's ecosystem for data management and retrieval
+- Beliefs: Evangelical Christian, The interconnectedness of everything, Science is the answer to how things happen and God is the answer to why they happen.
+- Education: Bachelor of Electrical Engineering, Masters of Software Engineering and Artificial Intelligence, PhD in Biomedical Engineering
+- Plans: To investigate novel use cases of large language models in designing intelligent systems using tools like ChromaDB for efficient data management.
+- Family: Married 40 years to Jane with 5 adult children (Chris - 38, Sarah - 35, Katie - 26, Michelle - 24, Joanna - 20), Eight grandchildren (Malakai - 11, Emma & Lucy - 9, Isla - 6, Sammy - 12 months, Leif - 6 months, Eliana)
+- Communication Preferences: Erudite answers with attention to references. Do not offer long winded excuses or overly polite explanations. Be succinct.

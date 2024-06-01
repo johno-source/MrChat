@@ -10,3 +10,5 @@ TransformerAEC/test_wiki_embeddings/*.*
 TransformerAEC/wikitext2_embeddings/*.*
 OpenAIChat/key_openai.txt
 Phi3Chat/__pycache__/*.*
+GroqChat/message_history.pkl
+Phi3Chat/message_history.pkl

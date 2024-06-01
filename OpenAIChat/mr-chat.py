@@ -48,19 +48,19 @@ import openai
 import textwrap
 import json
 from time import sleep
+import datetime
 from command_interpreter import CommandInterpreter
 
 
 def open_file(filepath):
     with open(filepath, 'r', encoding='utf-8', errors='ignore') as infile:
         return infile.read()
-    
+
 def save_file(filepath, content):
     with open(filepath, 'w', encoding='utf-8') as outfile:
         outfile.write(content)
 
 
-    
 # define the chatbot interface to memory recall
 chatbot_functions = list()
 chatbot_functions.append({'name' : 'entity', 'description': "Finds information about a named entity.", 'parameters': {
@@ -129,7 +129,7 @@ class GPTChatBot():
         self._context = open_file('context.txt')
         self._update_user_profile = open_file('system_update_user_profile.txt')
         self._update_context = open_file('system_update_context.txt')
-        self._system_message = self._system_default.replace('<<PROFILE>>', self._user_profile).replace('<<CONTEXT>>', self._context)
+        self._update_system_message()
 
     def __call__(self, args):
         return self.generate_chat_response(self.compose_conversation(args))
@@ -139,7 +139,7 @@ class GPTChatBot():
         self._history.append({'role': 'user', 'content': text})
         conversation = list()
         conversation += self._history
-        self._system_message = self._system_default.replace('<<PROFILE>>', self._user_profile).replace('<<CONTEXT>>', self._context)
+        self._update_system_message()
         conversation.append({'role': 'system', 'content': self._system_message})
         return conversation
 
@@ -158,6 +158,13 @@ class GPTChatBot():
             formatted_lines.append(f'Role: {h["role"]}')
             formatted_lines.append(f'Content: {h["content"]}')
         return '\n'.join(formatted_lines)
+
+    def dump_conversation(self, conversation):
+        formatted_lines = []
+        for c in conversation:
+            formatted_lines.append(f'Role: {c["role"]}')
+            formatted_lines.append(f'Content: {c["content"]}')
+        print('\n'.join(formatted_lines))
     
     def system_prompt(self, _):
         return self._system_message
@@ -180,20 +187,28 @@ class GPTChatBot():
     def update_context(self, _):
         conversation = list()
         conversation += self._history
-        update_context = self._update_context.replace('<<CONTEXT>>', self._context)
+        update_context = self._update_context.replace('<<CONTEXT>>', self._context).replace('<<DATETIME>>', datetime.datetime.now().isoformat())
         conversation.append({'role': 'system', 'content': update_context})
+
+        self.dump_conversation(conversation)
+        
         response, _ = chatbot(conversation)
         self._context = response
         return response
-    
+
+    def _update_system_message(self):
+        self._system_message = self._system_default.replace('<<PROFILE>>', self._user_profile).replace('<<CONTEXT>>', 
+            self._context).replace('<<DATETIME>>', datetime.datetime.now().isoformat())
+
     def exit(self, _):
-        self.update_context('NA')
-        self.update_user_profile('NA')
+        print("Updating context ...")
+        print(self.update_context('NA'))
+        print("Updating user profile ...")
+        print(self.update_user_profile('NA'))
         save_file("context.txt", self._context)
         save_file("user_profile.txt", self._user_profile)
         print('Bye!')
         exit(0)
-
     
     # define a closure to allow class functions to be used in commands
     def make_command(self, func):
@@ -201,18 +216,29 @@ class GPTChatBot():
             return fmt(func(args))
         return callable_entity
 
+def _quit(_):
+    exit(0)
+
+# use a closure to add the interpreter to the help command
+def create_help(interp):
+    def help_cmd(_):
+        return interp.help()
+    return help_cmd
+
 if __name__ == '__main__':
     # instantiate chatbot, variables
     interp = CommandInterpreter()
     bot = GPTChatBot()
     interp.add_default_command(bot)
-    interp.add_command('exit', bot.make_command(bot.exit))
-    interp.add_command('history', bot.make_command(bot.history))
-    interp.add_command('system', bot.make_command(bot.system_prompt))
-    interp.add_command('user', bot.make_command(bot.user_profile))
-    interp.add_command('context', bot.make_command(bot.current_context))
-    interp.add_command('update_user', bot.make_command(bot.update_user_profile))
-    interp.add_command('update_context', bot.make_command(bot.update_context))
+    interp.add_command('quit', bot.make_command(_quit), 'Terminates the chat session without updating the user profile or the context.')
+    interp.add_command('exit', bot.make_command(bot.exit), 'Terminates the chat session. Updates the user profile and stores the context.')
+    interp.add_command('history', bot.make_command(bot.history), "Prints the current session's history.")
+    interp.add_command('system', bot.make_command(bot.system_prompt), "Prints the system prompt.")
+    interp.add_command('user', bot.make_command(bot.user_profile), "Prints the user profile.")
+    interp.add_command('context', bot.make_command(bot.current_context), "Prints the current context.")
+    interp.add_command('update_user', bot.make_command(bot.update_user_profile), "Updates the user profile.")
+    interp.add_command('update_context', bot.make_command(bot.update_context), "Updates the context.")
+    interp.add_command('help', create_help(interp), "Lists the available commands and what they do.")
 
     while True:
         text = input('\nMrChat> ')

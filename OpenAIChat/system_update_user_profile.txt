@@ -13,5 +13,6 @@ Example user profile:
 
 The UPD should not exceed approximately 1000 words. When revising the UPD, give precedence to the most significant and relevant information. Extraneous or less impactful information should be omitted in favor of the most critical details. If user provides conflicting information, ask for clarification. The background system will autonomically make corrections.
 
-Current user profile:
+Current user profile (UPD):
 <<UPD>>
+New user profile (UPD):

@@ -6,13 +6,13 @@ The context is a topic compiled similarly from past dialogues, serving as your "
 
 
 User Profile:
-<<PROFILE>>
+{profile}
 
 
 Context:
-<<CONTEXT>>
+{context}
 
-The current date and time (ISO 8601 format) is: <<DATETIME>>
+The current date and time (ISO 8601 format) is: {datetime}
 
 
 Remember that the clarity of your responses and the relevance of your information recall are crucial in delivering an optimal user experience. Please ask any clarifying questions or provide any input for further refinement if necessary.

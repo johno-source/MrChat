@@ -1,3 +1,7 @@
+OpenAIChat/key_openai.txt
+OpenAIChat/.DS_Store
+.DS_Store
+LangChainChat/github_key.txt
 .ipynb_checkpoints/*.ipynb
 gptj.pt
 hello_milvus.py

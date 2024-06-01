@@ -51,3 +51,17 @@ class CommandInterpreter():
             formatted_lines.append(f'{c:<20} : {text}')
         return '\n'.join(formatted_lines)
 
+    def function_calls(self):
+        formatted_lines = ["["]
+        for c, text in self._help.items():
+            formatted_lines.append( '    {')
+            formatted_lines.append(f'        "name": "{c}",')
+            formatted_lines.append(f'        "description": "{text}"')
+            formatted_lines.append( '        "parameters": {')
+            formatted_lines.append( '            "type": "object",')
+            formatted_lines.append( '            "properties": {},')
+            formatted_lines.append( '    },')
+        formatted_lines.append("]")
+        return '\n'.join(formatted_lines)
+
+

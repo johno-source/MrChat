@@ -12,3 +12,6 @@ OpenAIChat/key_openai.txt
 Phi3Chat/__pycache__/*.*
 GroqChat/message_history.pkl
 Phi3Chat/message_history.pkl
+LangChainChat/github_key.txt
+OpenAIChat/.DS_Store
+.DS_Store

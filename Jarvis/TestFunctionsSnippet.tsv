@@ -1,0 +1,3 @@
+user input	function call
+Can you show me the current content of my clipboard?	read clipboard
+Take a screenshot of my current screen.	take screenshot

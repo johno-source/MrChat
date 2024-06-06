@@ -1,0 +1,556 @@
+Test 1: My first function prompt using llama3-70b-8192
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               19               0           0                0
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               0               0           0               16
+Failures:
+Accuracy: 100.00%
+Test 2: My first function prompt using llama3-8b-8192
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               13               0           0                6
+read clipboard                0               7           1                6
+search web                    0               0           8                0
+take screenshot               0               0           1               15
+Failures:
+Show me the text I copied earlier.       Expected: read clipboard Result: take screenshot
+Find out the name of the book on my desk. Expected: capture webcam Result: take screenshot
+What's the latest meme I saved?          Expected: read clipboard Result: take screenshot
+How does my setup look for the meeting?  Expected: capture webcam Result: take screenshot
+Is the website I'm on secure?            Expected: take screenshot Result: search web
+What’s the last message I copied?        Expected: read clipboard Result: take screenshot
+Can you see if my desktop background is appropriate? Expected: capture webcam Result: take screenshot
+What’s the latest link I saved?          Expected: read clipboard Result: search web
+Can you see if my laptop is plugged in?  Expected: capture webcam Result: take screenshot
+Can you tell if my cat is on the bed?    Expected: capture webcam Result: take screenshot
+What’s the last string of text I copied? Expected: read clipboard Result: take screenshot
+Can you see if my whiteboard has any drawings on it? Expected: capture webcam Result: take screenshot
+What’s the last note I copied?           Expected: read clipboard Result: take screenshot
+What’s the latest code snippet I copied? Expected: read clipboard Result: take screenshot
+Accuracy: 75.44%
+
+Test 3: My first function prompt using gemma-7b-it
+
+                                                    Capture Webcam  \
+Capture Webcam                                                   0   
+Capture webcam                                                   0   
+Extract clipboard                                                0   
+Read clipboard                                                   0   
+Search web                                                       0   
+The provided text is not included in the given ...               0   
+capture webcam                                                   4   
+extract clipboard                                                0   
+read clipboard                                                   0   
+search web                                                       0   
+take screenshot                                                  0   
+
+                                                    Capture webcam  \
+Capture Webcam                                                   0   
+Capture webcam                                                   0   
+Extract clipboard                                                0   
+Read clipboard                                                   0   
+Search web                                                       0   
+The provided text is not included in the given ...               0   
+capture webcam                                                   9   
+extract clipboard                                                0   
+read clipboard                                                   0   
+search web                                                       0   
+take screenshot                                                  0   
+
+                                                    Extract clipboard  \
+Capture Webcam                                                      0   
+Capture webcam                                                      0   
+Extract clipboard                                                   0   
+Read clipboard                                                      0   
+Search web                                                          0   
+The provided text is not included in the given ...                  0   
+capture webcam                                                      0   
+extract clipboard                                                   0   
+read clipboard                                                      1   
+search web                                                          0   
+take screenshot                                                     0   
+
+                                                    Read clipboard  \
+Capture Webcam                                                   0   
+Capture webcam                                                   0   
+Extract clipboard                                                0   
+Read clipboard                                                   0   
+Search web                                                       0   
+The provided text is not included in the given ...               0   
+capture webcam                                                   0   
+extract clipboard                                                0   
+read clipboard                                                   1   
+search web                                                       0   
+take screenshot                                                  0   
+
+                                                    Search web  \
+Capture Webcam                                               0   
+Capture webcam                                               0   
+Extract clipboard                                            0   
+Read clipboard                                               0   
+Search web                                                   0   
+The provided text is not included in the given ...           0   
+capture webcam                                               0   
+extract clipboard                                            0   
+read clipboard                                               0   
+search web                                                   5   
+take screenshot                                              2   
+
+                                                    The provided text is not included in the given context, so I am unable to extract the requested information.  \
+Capture Webcam                                                                                      0                                                              
+Capture webcam                                                                                      0                                                              
+Extract clipboard                                                                                   0                                                              
+Read clipboard                                                                                      0                                                              
+Search web                                                                                          0                                                              
+The provided text is not included in the given ...                                                  0                                                              
+capture webcam                                                                                      0                                                              
+extract clipboard                                                                                   0                                                              
+read clipboard                                                                                      1                                                              
+search web                                                                                          0                                                              
+take screenshot                                                                                     0                                                              
+
+                                                    capture webcam  \
+Capture Webcam                                                   0   
+Capture webcam                                                   0   
+Extract clipboard                                                0   
+Read clipboard                                                   0   
+Search web                                                       0   
+The provided text is not included in the given ...               0   
+capture webcam                                                   6   
+extract clipboard                                                0   
+read clipboard                                                   0   
+search web                                                       0   
+take screenshot                                                  6   
+
+                                                    extract clipboard  \
+Capture Webcam                                                      0   
+Capture webcam                                                      0   
+Extract clipboard                                                   0   
+Read clipboard                                                      0   
+Search web                                                          0   
+The provided text is not included in the given ...                  0   
+capture webcam                                                      0   
+extract clipboard                                                   0   
+read clipboard                                                      4   
+search web                                                          0   
+take screenshot                                                     0   
+
+                                                    read clipboard  \
+Capture Webcam                                                   0   
+Capture webcam                                                   0   
+Extract clipboard                                                0   
+Read clipboard                                                   0   
+Search web                                                       0   
+The provided text is not included in the given ...               0   
+capture webcam                                                   0   
+extract clipboard                                                0   
+read clipboard                                                   6   
+search web                                                       0   
+take screenshot                                                  0   
+
+                                                    search web  \
+Capture Webcam                                               0   
+Capture webcam                                               0   
+Extract clipboard                                            0   
+Read clipboard                                               0   
+Search web                                                   0   
+The provided text is not included in the given ...           0   
+capture webcam                                               0   
+extract clipboard                                            0   
+read clipboard                                               1   
+search web                                                   3   
+take screenshot                                              1   
+
+                                                    take screenshot  
+Capture Webcam                                                    0  
+Capture webcam                                                    0  
+Extract clipboard                                                 0  
+Read clipboard                                                    0  
+Search web                                                        0  
+The provided text is not included in the given ...                0  
+capture webcam                                                    0  
+extract clipboard                                                 0  
+read clipboard                                                    0  
+search web                                                        0  
+take screenshot                                                   7  
+Failures:
+Can you show me the current content of my clipboard?         Expected: read clipboard Result: extract clipboard
+What is the weather like in Sydney today?                    Expected: search web Result: Search web
+Find me the latest news on AI developments.                  Expected: search web Result: Search web
+Show me the text I copied earlier.                           Expected: read clipboard Result: The provided text is not included in the given context, so I am unable to extract the requested information.
+Search for the best restaurants near me.                     Expected: search web Result: Search web
+What do you think of the jumper I am wearing?                Expected: capture webcam Result: Capture webcam
+Please tell me what's in my clipboard right now.             Expected: read clipboard Result: extract clipboard
+Can you show me the latest image from my webcam?             Expected: capture webcam Result: Capture Webcam
+Is my webcam working properly? Check it now.                 Expected: capture webcam Result: Capture webcam
+Do you think my room is tidy?                                Expected: capture webcam Result: Capture webcam
+Can you tell if my haircut looks good?                       Expected: capture webcam Result: Capture webcam
+What's the latest meme I saved?                              Expected: read clipboard Result: extract clipboard
+Can you see if my coding setup looks correct?                Expected: take screenshot Result: Search web
+Did I copy any important emails today?                       Expected: read clipboard Result: search web
+Is the website I'm on secure?                                Expected: take screenshot Result: Search web
+Does my room look tidy?                                      Expected: capture webcam Result: Capture webcam
+Is there a notification banner on my screen?                 Expected: take screenshot Result: capture webcam
+Can you see if my desktop background is appropriate?         Expected: capture webcam Result: Capture Webcam
+What’s the latest link I saved?                              Expected: read clipboard Result: extract clipboard
+Can you check if my coffee cup is on the desk?               Expected: capture webcam Result: Capture webcam
+Is there any important text I copied recently?               Expected: read clipboard Result: Read clipboard
+Can you see if my laptop is plugged in?                      Expected: capture webcam Result: Capture Webcam
+Can you tell if my cat is on the bed?                        Expected: capture webcam Result: Capture Webcam
+Is there a reminder notification on my screen?               Expected: take screenshot Result: capture webcam
+Does my screen show any error messages?                      Expected: take screenshot Result: capture webcam
+What’s the latest password I copied?                         Expected: read clipboard Result: Extract clipboard
+Is there a security warning on my screen?                    Expected: take screenshot Result: capture webcam
+Can you check if my water bottle is full?                    Expected: capture webcam Result: Capture webcam
+Can you see if my speakers are on my desk?                   Expected: capture webcam Result: Capture webcam
+Can you find the latest news on space exploration?           Expected: search web Result: Search web
+Check if there's an email notification on my screen.         Expected: take screenshot Result: capture webcam
+Does my screen show any weather alerts?                      Expected: take screenshot Result: search web
+Can you see if my glasses are on the table?                  Expected: capture webcam Result: Capture webcam
+Search for the best restaurants in Sydney.                   Expected: search web Result: Search web
+Is there any system update notification on my screen?        Expected: take screenshot Result: capture webcam
+Accuracy: 38.60%
+
+
+Test 3: My first function prompt using gemma-7b-it
+
+Unknown Labels in: ['capture webcam', 'extract clipboard', 'read clipboard', 'search web', 'take screenshot', 'the provided text is not included in the given context, so i am unable to extract the requested information.']
+Failures:
+Can you show me the current content of my clipboard?         Expected: read clipboard       Result: extract clipboard
+Show me the text I copied earlier.                           Expected: read clipboard       Result: the provided text is not included in the given context, so i am unable to extract the requested information.
+Please tell me what's in my clipboard right now.             Expected: read clipboard       Result: extract clipboard
+What's the latest meme I saved?                              Expected: read clipboard       Result: extract clipboard
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: search web
+Did I copy any important emails today?                       Expected: read clipboard       Result: search web
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Is there a notification banner on my screen?                 Expected: take screenshot      Result: capture webcam
+What’s the latest link I saved?                              Expected: read clipboard       Result: extract clipboard
+Is there a reminder notification on my screen?               Expected: take screenshot      Result: capture webcam
+Does my screen show any error messages?                      Expected: take screenshot      Result: capture webcam
+What’s the latest password I copied?                         Expected: read clipboard       Result: extract clipboard
+Is there a security warning on my screen?                    Expected: take screenshot      Result: capture webcam
+Does my screen show any weather alerts?                      Expected: take screenshot      Result: search web
+Is there any system update notification on my screen?        Expected: take screenshot      Result: capture webcam
+Accuracy: 73.68%
+
+Test 3: My first function prompt using gemma-7b-it
+
+Unknown Labels in: ['capture webcam', 'read clipboard', 'read clipboard.', 'search web', 'take screenshot', 'the provided text is not included in the given context, so i am unable to extract the requested information.']
+Failures:
+Show me the text I copied earlier.                           Expected: read clipboard       Result: the provided text is not included in the given context, so i am unable to extract the requested information.
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+What's the latest meme I saved?                              Expected: read clipboard       Result: read clipboard.
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: read clipboard
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Is there a notification banner on my screen?                 Expected: take screenshot      Result: capture webcam
+Is there a reminder notification on my screen?               Expected: take screenshot      Result: capture webcam
+Does my screen show any error messages?                      Expected: take screenshot      Result: capture webcam
+Is there a security warning on my screen?                    Expected: take screenshot      Result: capture webcam
+Check if there's an email notification on my screen.         Expected: take screenshot      Result: capture webcam
+Does my screen show any weather alerts?                      Expected: take screenshot      Result: search web
+Is there any system update notification on my screen?        Expected: take screenshot      Result: capture webcam
+Accuracy: 78.95%
+
+Test 5: JSON function prompt using phi3:14b-medium-4k-instruct-q8_0
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               19               0           0                0
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               1               0           1               14
+Failures:
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: capture webcam
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Accuracy: 96.49%
+
+Test 1: My first function prompt using llama3-70b-8192
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               19               0           0                0
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               0               0           0               16
+Failures:
+Accuracy: 100.00%
+
+Test 3: My first function prompt using gemma-7b-it
+
+Unknown Labels in: ['capture webcam', 'read clipboard', 'search web', 'take screenshot', 'the provided text is not included in the given context, so i am unable to extract the requested information.']
+Failures:
+Show me the text I copied earlier.                           Expected: read clipboard       Result: the provided text is not included in the given context, so i am unable to extract the requested information.
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: read clipboard
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Is there a notification banner on my screen?                 Expected: take screenshot      Result: capture webcam
+Is there a reminder notification on my screen?               Expected: take screenshot      Result: capture webcam
+Does my screen show any error messages?                      Expected: take screenshot      Result: capture webcam
+Is there a security warning on my screen?                    Expected: take screenshot      Result: capture webcam
+Check if there's an email notification on my screen.         Expected: take screenshot      Result: capture webcam
+Does my screen show any weather alerts?                      Expected: take screenshot      Result: search web
+Is there any system update notification on my screen?        Expected: take screenshot      Result: capture webcam
+Accuracy: 80.70%
+
+Test 5: JSON function prompt using phi3:14b-medium-4k-instruct-q8_0
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               19               0           0                0
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               1               0           1               14
+Failures:
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: capture webcam
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Accuracy: 96.49%
+
+Test 2: My first function prompt using llama3-8b-8192
+
+Unknown Labels in: ['capture webcam', 'none', 'read clipboard', 'search web', 'take screenshot']
+Failures:
+Show me the text I copied earlier.                           Expected: read clipboard       Result: take screenshot
+Find out the name of the book on my desk.                    Expected: capture webcam       Result: take screenshot
+What's the latest meme I saved?                              Expected: read clipboard       Result: take screenshot
+How does my setup look for the meeting?                      Expected: capture webcam       Result: take screenshot
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+What’s the last message I copied?                            Expected: read clipboard       Result: take screenshot
+Can you see if my desktop background is appropriate?         Expected: capture webcam       Result: take screenshot
+What’s the latest link I saved?                              Expected: read clipboard       Result: search web
+Can you see if my laptop is plugged in?                      Expected: capture webcam       Result: none
+Can you see if my whiteboard has any drawings on it?         Expected: capture webcam       Result: take screenshot
+What’s the last note I copied?                               Expected: read clipboard       Result: take screenshot
+Is there any system update notification on my screen?        Expected: take screenshot      Result: none
+Accuracy: 78.95%
+
+Test 5: JSON function prompt using phi3:14b-medium-4k-instruct-q8_0
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               19               0           0                0
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               1               0           1               14
+Failures:
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: capture webcam
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Accuracy: 96.49%
+
+Test 6: JSON function prompt using llama3-8b-8192 on Groq
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               15               0           0                4
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               0               0           1               15
+Failures:
+Find out the name of the book on my desk.                    Expected: capture webcam       Result: take screenshot
+How does my setup look for the meeting?                      Expected: capture webcam       Result: take screenshot
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Can you see if my desktop background is appropriate?         Expected: capture webcam       Result: take screenshot
+Can you see if my speakers are on my desk?                   Expected: capture webcam       Result: take screenshot
+Accuracy: 91.23%
+
+Test 5: JSON function prompt using phi3:14b-medium-4k-instruct-q8_0
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               18               0           0                1
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               1               1           1               13
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Find out the name of the book on my desk.                    Expected: capture webcam       Result: take screenshot
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: capture webcam
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Accuracy: 92.98%
+
+Test 6: JSON function prompt using llama3-8b-8192 on Groq
+
+Unknown Labels in: ['capture webcam', 'none', 'read clipboard', 'search web', 'take screenshot']
+Failures:
+Do you think my room is tidy?                                Expected: capture webcam       Result: none
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Find out the name of the book on my desk.                    Expected: capture webcam       Result: read clipboard
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: search web
+How does my setup look for the meeting?                      Expected: capture webcam       Result: search web
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+What’s the last message I copied?                            Expected: read clipboard       Result: search web
+Can you see if my desktop background is appropriate?         Expected: capture webcam       Result: take screenshot
+Can you see if my laptop is plugged in?                      Expected: capture webcam       Result: none
+Can you see if my whiteboard has any drawings on it?         Expected: capture webcam       Result: take screenshot
+Can you see if my speakers are on my desk?                   Expected: capture webcam       Result: take screenshot
+Does my screen show any weather alerts?                      Expected: take screenshot      Result: search web
+Accuracy: 78.95%
+
+Test 7: JSON function prompt using llama3-70b-8192 on Groq
+
+                 capture webcam  read clipboard  search web  take screenshot
+capture webcam               19               0           0                0
+read clipboard                0              14           0                0
+search web                    0               0           8                0
+take screenshot               0               1           0               15
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Accuracy: 98.25%
+
+Test 8: JSON function prompt using mixtral-8x7b-32768 on Groq
+
+Unknown Labels in: ['capture webcam', 'none', 'read clipboard', 'search web', 'take screenshot']
+Failures:
+Do you think my room is tidy?                                Expected: capture webcam       Result: none
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Can you see if my laptop is plugged in?                      Expected: capture webcam       Result: none
+Accuracy: 92.98%
+
+Test 9: JSON function prompt with None as a choice using llama3-70b-8192 on Groq
+
+
+Test 10: JSON function prompt with None Functions using phi3:14b-medium-4k-instruct-q8_0
+
+
+Test 10: JSON function prompt with None Functions using phi3:14b-medium-4k-instruct-q8_0
+
+                 capture webcam  none  read clipboard  search web  \
+capture webcam               18     0               0           0   
+none                          0     0               0          10   
+read clipboard                0     0              14           0   
+search web                    0     0               0           8   
+take screenshot               1     0               1           1   
+
+                 take screenshot  
+capture webcam                 1  
+none                           0  
+read clipboard                 0  
+search web                     0  
+take screenshot               13  
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Find out the name of the book on my desk.                    Expected: capture webcam       Result: take screenshot
+Can you see if my coding setup looks correct?                Expected: take screenshot      Result: capture webcam
+Is the website I'm on secure?                                Expected: take screenshot      Result: search web
+Can you recommend a good book?                               Expected: none                 Result: search web
+How do I bake a cake?                                        Expected: none                 Result: search web
+What's the best way to learn Python?                         Expected: none                 Result: search web
+Can you help me solve this math problem?                     Expected: none                 Result: search web
+What are the symptoms of a cold?                             Expected: none                 Result: search web
+How do I change the tire on my car?                          Expected: none                 Result: search web
+What's the best exercise for weight loss?                    Expected: none                 Result: search web
+Can you tell me a joke?                                      Expected: none                 Result: search web
+What are the side effects of this medication?                Expected: none                 Result: search web
+How do I set up a new email account?                         Expected: none                 Result: search web
+Accuracy: 79.10%
+
+Test 9: JSON function prompt with None as a choice using llama3-70b-8192 on Groq
+
+                 capture webcam  none  read clipboard  search web  \
+capture webcam               19     0               0           0   
+none                          0     0               0          10   
+read clipboard                0     0              14           0   
+search web                    0     0               0           8   
+take screenshot               0     0               1           0   
+
+                 take screenshot  
+capture webcam                 0  
+none                           0  
+read clipboard                 0  
+search web                     0  
+take screenshot               15  
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Can you recommend a good book?                               Expected: none                 Result: search web
+How do I bake a cake?                                        Expected: none                 Result: search web
+What's the best way to learn Python?                         Expected: none                 Result: search web
+Can you help me solve this math problem?                     Expected: none                 Result: search web
+What are the symptoms of a cold?                             Expected: none                 Result: search web
+How do I change the tire on my car?                          Expected: none                 Result: search web
+What's the best exercise for weight loss?                    Expected: none                 Result: search web
+Can you tell me a joke?                                      Expected: none                 Result: search web
+What are the side effects of this medication?                Expected: none                 Result: search web
+How do I set up a new email account?                         Expected: none                 Result: search web
+Accuracy: 83.58%
+
+Test 9: JSON function prompt with None as a choice using llama3-70b-8192 on Groq
+
+                 capture webcam  none  read clipboard  search web  \
+capture webcam               19     0               0           0   
+none                          0     1               0           2   
+read clipboard                0     0              14           0   
+search web                    0     0               0          16   
+take screenshot               0     0               1           0   
+
+                 take screenshot  
+capture webcam                 0  
+none                           0  
+read clipboard                 0  
+search web                     0  
+take screenshot               15  
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Can you help me solve this math problem?                     Expected: none                 Result: search web
+Can you tell me a joke?                                      Expected: none                 Result: search web
+Accuracy: 95.59%
+
+Test 11: JSON function prompt with None as a choice using llama3-70b-8192 on Groq
+
+                 capture webcam  none  read clipboard  search web  \
+capture webcam               19     0               0           0   
+none                          0     3               0           0   
+read clipboard                0     0              14           0   
+search web                    0     0               0          16   
+take screenshot               0     0               2           0   
+
+                 take screenshot  
+capture webcam                 0  
+none                           0  
+read clipboard                 0  
+search web                     0  
+take screenshot               14  
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Is the website I'm on secure?                                Expected: take screenshot      Result: read clipboard
+Accuracy: 97.06%
+
+Test 12: JSON function prompt with None as a choice using llama3-70b-8192 on Groq
+
+                 capture webcam  none  read clipboard  search web  \
+capture webcam               18     0               0           0   
+none                          0     3               0           0   
+read clipboard                0     0              14           0   
+search web                    1     0               0          15   
+take screenshot               0     0               1           0   
+
+                 take screenshot  
+capture webcam                 1  
+none                           0  
+read clipboard                 0  
+search web                     0  
+take screenshot               15  
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Can you see if my desktop background is appropriate?         Expected: capture webcam       Result: take screenshot
+How do I change the tire on my car?                          Expected: search web           Result: capture webcam
+Accuracy: 95.59%
+
+Test 12: JSON function prompt with None as a choice using llama3-70b-8192 on Groq
+
+                 capture webcam  none  read clipboard  search web  \
+capture webcam               17     0               0           0   
+none                          0     1               0           2   
+read clipboard                0     0              14           0   
+search web                    1     0               0          15   
+take screenshot               0     0               1           0   
+
+                 take screenshot  
+capture webcam                 2  
+none                           0  
+read clipboard                 0  
+search web                     0  
+take screenshot               15  
+Failures:
+Is there anything interesting on the document I just opened? Expected: take screenshot      Result: read clipboard
+Can you see if my desktop background is appropriate?         Expected: capture webcam       Result: take screenshot
+Can you see if my laptop is plugged in?                      Expected: capture webcam       Result: take screenshot
+Can you help me solve this math problem?                     Expected: none                 Result: search web
+How do I change the tire on my car?                          Expected: search web           Result: capture webcam
+Can you tell me a joke?                                      Expected: none                 Result: search web
+Accuracy: 91.18%

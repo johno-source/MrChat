@@ -1,0 +1,58 @@
+user input	function call
+Can you show me the current content of my clipboard?	read clipboard
+Take a screenshot of my current screen.	take screenshot
+What is the weather like in Sydney today?	search web
+Check what the webcam is showing right now.	capture webcam
+Find me the latest news on AI developments.	search web
+Show me the text I copied earlier.	read clipboard
+Capture my screen at this moment.	take screenshot
+Search for the best restaurants near me.	search web
+Get an image from my webcam.	capture webcam
+What do you think of the jumper I am wearing?	capture webcam
+Can you check if there's anything suspicious on my screen?	take screenshot
+Please tell me what's in my clipboard right now.	read clipboard
+I need the latest update on global news.	search web
+Can you capture my screen at this point in time?	take screenshot
+Can you show me the latest image from my webcam?	capture webcam
+Look up the current trending topics online.	search web
+Check what I have copied recently.	read clipboard
+Is my webcam working properly? Check it now.	capture webcam
+Can you show me what's on my screen currently?	take screenshot
+Do you think my room is tidy?	capture webcam
+Is there anything interesting on the document I just opened?	take screenshot
+Can you tell if my haircut looks good?	capture webcam
+Find out the name of the book on my desk.	capture webcam
+What's the latest meme I saved?	read clipboard
+Can you see if my coding setup looks correct?	take screenshot
+Did I copy any important emails today?	read clipboard
+How does my setup look for the meeting?	capture webcam
+Is the website I'm on secure?	take screenshot
+Does my room look tidy?	capture webcam
+What’s the last message I copied?	read clipboard
+Is there a notification banner on my screen?	take screenshot
+Can you see if my desktop background is appropriate?	capture webcam
+What’s the latest link I saved?	read clipboard
+Does the document on my screen look formatted correctly?	take screenshot
+Can you check if my coffee cup is on the desk?	capture webcam
+Is there any important text I copied recently?	read clipboard
+Can you see if my laptop is plugged in?	capture webcam
+Can you tell if my cat is on the bed?	capture webcam
+Is there a reminder notification on my screen?	take screenshot
+What’s the last string of text I copied?	read clipboard
+Does my screen show any error messages?	take screenshot
+Can you see if my whiteboard has any drawings on it?	capture webcam
+What’s the latest password I copied?	read clipboard
+Is there a security warning on my screen?	take screenshot
+Can you check if my water bottle is full?	capture webcam
+What’s the last note I copied?	read clipboard
+Can you see if my speakers are on my desk?	capture webcam
+Can you find the latest news on space exploration?	search web
+Check if there's an email notification on my screen.	take screenshot
+What’s the last link I copied to my clipboard?	read clipboard
+Does my screen show any weather alerts?	take screenshot
+Can you see if my glasses are on the table?	capture webcam
+Search for the best restaurants in Sydney.	search web
+Is there any system update notification on my screen?	take screenshot
+What’s the latest code snippet I copied?	read clipboard
+Can you check if my charger is plugged in?	capture webcam
+Find out the current stock price of Apple.	search web

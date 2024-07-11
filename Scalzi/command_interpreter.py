@@ -31,13 +31,17 @@ class CommandInterpreter():
 
 
     # this is the heart of the interpreter - find and execute the command.
-    def execute(self, command, args = None):
+    def execute(self, command_and_args):
+        words = command_and_args.split()
+        command = words[0]
+        args = ' '.join(words[1:])
+
         if command in self._commands:
             print(f"Executing command {command} with args {args}")
             return self._executor.submit(self._commands[command], args).result()
         else:
             print(f"Executing default command {command}")
-            return self._executor.submit(self._default_command, command).result()
+            return self._executor.submit(self._default_command, command_and_args).result()
         
     def default_command(self, command):
         words = command.split()

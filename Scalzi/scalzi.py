@@ -32,6 +32,7 @@ from sensory_cognition_node import SensoryCognitionNode
 from chat_cognition_node import ChatCognitionNode
 from chat_ledger import ChatLedger
 from langchain_groq import ChatGroq
+from scalzi_logger import *
 
 class ThoughtChain:
     def __init__(self, interp):
@@ -54,6 +55,14 @@ class ThoughtChain:
         self.chat_node.run(self.ledger)
         return self.ledger.get_chat_output()
 
+    # define some functions to access the ledger
+    def get_user_input(self, _):
+        return self.ledger.get_user_input()
+
+    def set_user_input(self, args):
+        self.ledger.set_user_input(args)
+        return f'User input set to: {args}'
+
     # permit each node to be invoked from the command line
     def context_command(self, _):
         return self.context_node.run(self.ledger)
@@ -68,13 +77,30 @@ class ThoughtChain:
         print("Bye!")
         exit(0)
 
+def set_file_log_level_command(level):
+    return f'File logging level set to: {set_file_log_level(level)}'
+
+def set_console_log_level_command(level):
+    return f'Console logging level set to: {set_console_log_level(level)}'
+
+def log_command(args):
+    words = args.split()
+    if len(words) == 2:
+        if words[0] == 'file':
+            return set_file_log_level_command(words[1])
+        if words[0] == 'console':
+            return set_console_log_level_command(words[1])
+    return 'Usage: log <file|console> <level>'
 
 if __name__ == '__main__':
     # The user interface is all run through a command interpreter
     interp = CommandInterpreter()
     thought_chain = ThoughtChain(interp)
     interp.add_default_command(thought_chain)
-    interp.add_command('/exit', make_command(thought_chain.exit))
+    interp.add_command('exit', make_command(thought_chain.exit))
+    interp.add_command('log', make_command(log_command))
+    interp.add_command('get_user', make_command(thought_chain.get_user_input))
+    interp.add_command('set_user', make_command(thought_chain.set_user_input))
 
     while True:
         text = input('\nScalzi> ')

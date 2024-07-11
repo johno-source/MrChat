@@ -1,6 +1,9 @@
 #
 # This module contains the capabilities used by the Input Cognition Node.
 #
+from langchain_community.tools.tavily_search import TavilySearchResults
+from scalzi_logger import scalzi_logger
+
 
 def take_screenshot():
     path = 'screenshot.jpg'
@@ -27,5 +30,14 @@ def read_clipboard():
         print('Error: Clipboard content is not a string')
         return "None"
 
+_search = TavilySearchResults()
 def search_web(search_terms):
-    return "not implemented"
+    # the search terms might be a string or a list
+    if isinstance(search_terms, str):
+        search_str = search_terms
+    else:
+        search_str = ' OR '.join(search_terms)
+
+    # this returns a list of dictionaries 
+    scalzi_logger.info(f'Searching web for: {type(search_str)} {search_str}')
+    return search_str, _search.invoke({'query': search_str})[:3]
